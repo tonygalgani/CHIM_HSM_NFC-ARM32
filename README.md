@@ -146,3 +146,4 @@ Achieve a full HSM with identity management and secure NFC communication.
 - **ARM Architecture Reference Manual**: Deepen your understanding of the ARM instruction set.
 - **STM32 Reference Manuals**: Learn about the STM32L452RE and its peripherals (UART, I2C, SPI, etc.).
 - **Cryptography Resources**: Books like *Applied Cryptography* by Bruce Schneier can help you understand encryption algorithms.
+
