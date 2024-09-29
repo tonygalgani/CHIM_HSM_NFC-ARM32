@@ -1,6 +1,6 @@
 .section .isr_vector, "a"   /* Interrupt vector table section */
 .word   _estack             /* Initial Stack Pointer, provided by the linker */
-.word   _start              /* Reset Handler: entry point of your program */
+.word   reset_handler       /* Reset Handler: entry point of your program */
 
 
 
