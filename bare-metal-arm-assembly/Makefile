@@ -21,17 +21,22 @@ all: clean $(OBJ) $(ELF) $(BIN)
 
 # Rule to assemble the source file into an object file
 $(OBJ): $(SRC)
-	$(AS) $(TARGET) -g -o $@ $<
+	@echo "Compiling code files:"
+	@echo "	$(AS) $(TARGET) -g -o $@ $<"
+	@$(AS) $(TARGET) -g -o $@ $<
 
 $(ELF): $(OBJ)
-	$(LD) -T $(LINK) -o $@ $<
+	@echo "Linking object files:"
+	@echo "	$(LD) -T $(LINK) -o $@ $<"
+	@$(LD) -T $(LINK) -o $@ $<
 
 $(BIN): $(ELF)
-	$(OBJCOPY) -O binary $< $@
+	@echo "	$(OBJCOPY) -O binary $< $@"
+	@$(OBJCOPY) -O binary $< $@
 
 # Clean up build files
 clean:
-	@echo "Cleaning previously generated files"
+	@echo "Cleaning previously generated files:"
 	@echo "	rm -f $(OBJ) $(ELF) $(BIN)"
 	@rm -f $(OBJ) $(ELF) $(BIN)
 
