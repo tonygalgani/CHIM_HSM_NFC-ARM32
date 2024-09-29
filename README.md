@@ -10,7 +10,7 @@ Develop a secret manager HSM capable of storing sensitive information such as pa
 - Other security components (to be added)
 
 ## Development Environment:
-- **Toolchain**: `arm-none-eabi-gcc`, `arm-none-eabi-as`
+- **Toolchain**: `arm-none-eabi`
 - **Debugging**: `OpenOCD`, `GDB`
 
 ## Debug/Programming Procedure:
