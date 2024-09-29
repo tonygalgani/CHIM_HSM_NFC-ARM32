@@ -28,9 +28,19 @@
 .equ  AFR_HR_OFFSET,  0x24	/* Alternate function high register (for pins 8-15) */
 .equ  BRR_OFFSET,   	0x28	/* Bit reset register */
 
-.equ  GPIOA_NADIR, 0x48000000
-.equ  GPIOA_APEX, 0x480003FF
-.equ  GPIOA_MODER, GPIOA_NADIR + MODER_OFFSET
+.equ  GPIOA_NADIR,    0x48000000
+.equ  GPIOA_APEX,     0x480003FF
+.equ  GPIOA_MODER,    GPIOA_NADIR + MODER_OFFSET
+.equ  GPIOA_OTYPER,   GPIOA_NADIR + OTYPER_OFFSET
+.equ  GPIOA_OSPEEDR,  GPIOA_NADIR + OSPEEDR_OFFSET
+.equ  GPIOA_PUPDR,    GPIOA_NADIR + PUPDR_OFFSET
+.equ  GPIOA_IDR,      GPIOA_NADIR + IDR_OFFSET
+.equ  GPIOA_ODR,      GPIOA_NADIR + ODR_OFFSET
+.equ  GPIOA_BSRR,     GPIOA_NADIR + BSRR_OFFSET
+.equ  GPIOA_LCKR,     GPIOA_NADIR + LCKR_OFFSET
+.equ  GPIOA_AFR_LR,   GPIOA_NADIR + AFR_LR_OFFSET
+.equ  GPIOA_AFR_HR,   GPIOA_NADIR + AFR_HR_OFFSET
+.equ  GPIOA_BRR,      GPIOA_NADIR + BRR_OFFSET
 
 .equ  GPIOB_NADIR,  0x48000400
 .equ  GPIOB_APEX,   0x480007FF
@@ -49,6 +59,7 @@
 
 reset_handler:
   /* Starting point of the program */
+  ldr r0, =GPIOA_OTYPER
 
 infinite_loop:
     b infinite_loop                /* Infinite looping */
