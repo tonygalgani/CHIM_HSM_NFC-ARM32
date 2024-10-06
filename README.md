@@ -14,13 +14,12 @@ Develop a secret manager HSM capable of storing sensitive information such as pa
 - **Debugging**: `OpenOCD`, `GDB`
 
 ## Debug/Programming Procedure:
-1. Connect the Nucleo board and set up the necessary environment.
-2. Flash and debug the firmware:
+1. Connect the Nucleo board to the pc.
+2. Flash and debug the firmware using two terminal windows:
     ```bash
-    $ openocd -f interface/stlink.cfg -f target/stm32l4x.cfg
-    $ arm-none-eabi-gdb firmware.elf
-    (gdb) layout regs
-    (gdb) ni
+    $ openocd -f interface/stlink.cfg -f target/stm32l4x.cfg /* connect to the stlink  */
+    $ arm-none-eabi-gdb /* start gdb sever (with preset commands set in .gdbinit) */
+    (gdb) ni /* go to the next instruction in the program */
     ```
 
 ## Step-by-step Breakdown Plan:
@@ -34,13 +33,16 @@ Get comfortable with programming the Nucleo-L452RE-P in ARM assembly.
    - Familiarize yourself with basic instructions (`MOV`, `LDR`, `STR`, `ADD`, `SUB`) and control structures (`B`, `BL`, `CMP`, `BEQ`).
    - Study the ARM Cortex-M architecture, focusing on registers, stack usage, and memory access.
 
-2. **Set Up Development Environment**:
-   - Install toolchains (like `arm-none-eabi-gcc` and `arm-none-eabi-as`) and configure your build environment for assembly programming.
-   - Flash programs onto your Nucleo board using a debugger (e.g., GDB or OpenOCD).
-
+2. **Learn how functions work in arm asm**:
+   - Write a simple delay(ms) function.
+   - Write a function to enable a LED.
+   - Write a function to disable a LED.
+   
 3. **Develop Blinky**:
    - Write ARM assembly code to control an LED on the Nucleo board.
    - Configure GPIO registers in assembly to blink the LED.
+
+4. **Establish a full memory map header file of the mcu**
 
 #### Learning Outcome:
 Gain understanding of GPIO control and ARM assembly basics, setting a foundation for more complex hardware interactions.
