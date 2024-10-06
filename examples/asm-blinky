@@ -1,0 +1,56 @@
+.section .isr_vector, "a"
+.word   _estack             /* Initial Stack Pointer, provided by the linker */
+.word   _start              /* Reset Handler: entry point of your program */
+
+.section .text
+.global _start
+
+.equ GPIOA_BASE, 0x48000000     /* Base address for GPIOA */
+.equ GPIOA_MODER, 0x48000000    /* GPIOA Mode Register */
+.equ GPIOA_ODR,   0x48000014    /* GPIOA Output Data Register */
+.equ RCC_AHB2ENR, 0x4002104C    /* RCC AHB2 Peripheral Clock Enable Register */
+.equ GPIOAEN,     (1 << 0)      /* Enable GPIOA clock */
+.equ PA5,         (1 << 5)      /* Pin 5 (LED pin) */
+
+_start:
+    /* Enable GPIOA clock */
+    ldr r0, =RCC_AHB2ENR        /* Load address of RCC_AHB2ENR */
+    ldr r1, [r0]                /* Read the current value */
+    orr r1, r1, #GPIOAEN        /* Set bit 0 to enable GPIOA clock */
+    str r1, [r0]                /* Write back to RCC_AHB2ENR */
+
+    /* Configure PA5 as output */
+    ldr r0, =GPIOA_MODER        /* Load address of GPIOA_MODER */
+    ldr r1, [r0]                /* Read the current value */
+    bic r1, r1, #(3 << 10)      /* Clear bits 10 and 11 (PA5 mode) */
+    orr r1, r1, #(1 << 10)      /* Set PA5 to output mode (01) */
+    str r1, [r0]                /* Write back to GPIOA_MODER */
+
+loop:
+    /* Set PA5 high (turn on LED) */
+    ldr r0, =GPIOA_ODR          /* Load address of GPIOA_ODR */
+    ldr r1, [r0]                /* Read the current value */
+    orr r1, r1, #PA5            /* Set PA5 */
+    str r1, [r0]                /* Write back to GPIOA_ODR */
+
+    /* Delay loop */
+    bl delay
+
+    /* Set PA5 low (turn off LED) */
+    ldr r0, =GPIOA_ODR          /* Load address of GPIOA_ODR */
+    ldr r1, [r0]                /* Read the current value */
+    bic r1, r1, #PA5            /* Clear PA5 */
+    str r1, [r0]                /* Write back to GPIOA_ODR */
+
+    /* Delay loop */
+    bl delay
+
+    b loop                      /* Repeat */
+
+delay:
+    mov r0, #500000             /* Arbitrary delay value */
+delay_loop:
+    subs r0, r0, #1             /* Decrement r0 */
+    bne delay_loop              /* Loop until r0 is 0 */
+    bx lr                       /* Return from delay */
+
