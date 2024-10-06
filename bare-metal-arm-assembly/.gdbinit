@@ -5,7 +5,7 @@ target extended-remote localhost:3333
 monitor reset halt
 
 # Load the program into the target
-load
+load firmware.elf
 
 symbol-file firmware.elf
 
@@ -15,6 +15,4 @@ break reset_handler
 # Enable GDB TUI mode for source and assembly layout
 layout regs
 
-# Continue execution
-continue
-
+start
