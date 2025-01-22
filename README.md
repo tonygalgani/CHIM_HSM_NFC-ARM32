@@ -29,18 +29,15 @@ Develop a secret manager HSM capable of storing sensitive information such as pa
 Get comfortable with programming the Nucleo-L452RE-P in ARM assembly.
 
 #### Tasks:
-1. **Learn ARM Assembly Syntax**:
-   - Familiarize yourself with basic instructions (`MOV`, `LDR`, `STR`, `ADD`, `SUB`) and control structures (`B`, `BL`, `CMP`, `BEQ`).
-   - Study the ARM Cortex-M architecture, focusing on registers, stack usage, and memory access.
 
-2. **Learn how functions work in arm asm**:
-   - Write a simple delay(ms) function.
-   - Write a function to enable a LED.
-   - Write a function to disable a LED.
+1. **Learn how functions work in arm asm**: 
+   - Write a simple delay(ms) function. (Done)
+   - Write a function to enable a LED. (Done)
+   - Write a function to disable a LED. (Done)
    
-3. **Develop Blinky**:
-   - Write ARM assembly code to control an LED on the Nucleo board.
-   - Configure GPIO registers in assembly to blink the LED.
+2. **Develop Blinky**:
+   - Write ARM assembly code to control an LED on the Nucleo board. (Done)
+   - Configure GPIO registers in assembly to blink the LED. (Pending)
 
 4. **Establish a full memory map header file of the mcu**
 
@@ -141,11 +138,4 @@ Integrate NFC to manage identities and secure communication within the HSM.
 
 #### Learning Outcome:
 Achieve a full HSM with identity management and secure NFC communication.
-
----
-
-### Additional Learning Resources:
-- **ARM Architecture Reference Manual**: Deepen your understanding of the ARM instruction set.
-- **STM32 Reference Manuals**: Learn about the STM32L452RE and its peripherals (UART, I2C, SPI, etc.).
-- **Cryptography Resources**: Books like *Applied Cryptography* by Bruce Schneier can help you understand encryption algorithms.
 
