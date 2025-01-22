@@ -1,7 +1,8 @@
 # Secret Manager HSM in ARM Assembly (On Hold)
 
 ## Objective:
-Develop a secret manager HSM capable of storing sensitive information such as passwords, IDs, encryption keys, and identity card data. The project will primarily be developed in ARM assembly, with fallback to C when necessary.
+- Learn ARM development.
+- Develop a secret manager HSM capable of storing sensitive information such as passwords, IDs, encryption keys, and identity card data. The project will primarily be developed in ARM assembly, with fallback to C when necessary.
 
 ## Hardware:
 - STM32L452RE-P (Nucleo)
